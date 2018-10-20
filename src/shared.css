@@ -1,0 +1,96 @@
+* {
+    margin: 0;
+    padding: 0;
+    color: #eee;
+    font-size: 1.3em;
+    font-family: 'Nunito', sans-serif;
+}
+
+body {
+    background: rgb(65,111,39);
+    background: linear-gradient(94deg, rgba(65,111,39,1) 0%, rgba(11,80,30,1) 15%, rgba(19,38,110,1) 69%, rgba(7,55,119,1) 100%);
+    width: 80%;
+    margin: 0 auto;
+    height: 100vh;
+}
+
+.header {
+    text-align: center;
+    font-size: 2em;
+    margin: 50px 0 50px;
+}
+
+/* list item input */
+.to-do-input-container {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+
+.to-do-input {
+    background: transparent;
+    border: none;
+    border-bottom: solid 2px #eee;
+    width: 90%;
+    text-align: center;
+}
+
+.to-do-input:focus {
+    outline-width: 0;
+}
+
+.add-button {
+    font-size: 1em;
+    height: 60px;
+    margin: 0 20px;
+}
+
+/* to do list items */
+.to-do-list-items {
+    width: 40%;
+    margin: 20px auto;
+}
+
+.to-do-list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.list-item-text {
+    display: inline;
+    font-size: 1em;
+}
+
+.delete-button {
+    font-size: 0.7em;
+    margin: 0 30px;
+}
+
+/* finished to do list items */
+.finished-to-do-list-items {
+    width: 40%;
+    margin: 20px auto;
+}
+
+.finished-to-do-list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.finished-list-item-text {
+    color: #62747e;
+    text-decoration: line-through;
+    display: inline;
+    font-size: 1em;
+}
+
+.finished-delete-button {
+    color: #62747e;
+    font-size: 0.7em;
+    margin: 0 30px;
+}
