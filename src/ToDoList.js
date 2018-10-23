@@ -3,6 +3,8 @@ import ListItemInput from './ListItemInput';
 import ListItems from './ListItems';
 import FinishedListItems from './FinishedListItems';
 
+import './react-styles.css';
+
 class ToDoList extends Component {
     render() {
         return (

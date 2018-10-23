@@ -25,12 +25,13 @@ body {
     margin: 0 auto;
     display: flex;
     justify-content: center;
+    border-bottom: solid 2px #eee;
+    padding: 10px;
 }
 
 .to-do-input {
     background: transparent;
     border: none;
-    border-bottom: solid 2px #eee;
     width: 90%;
     text-align: center;
 }
@@ -48,6 +49,7 @@ body {
 /* to do list items */
 .to-do-list-items {
     width: 40%;
+    min-width: 40%;
     margin: 20px auto;
 }
 
@@ -55,12 +57,16 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 10px 0;
+    margin: 10px auto;
+    background-color: rgba(240, 255, 255, 0.6);
+    border-radius: 5px;
 }
 
 .list-item-text {
     display: inline;
     font-size: 1em;
+    padding-left: 25px;
+    color: darkblue;
 }
 
 .delete-button {
@@ -70,26 +76,30 @@ body {
 
 /* finished to do list items */
 .finished-to-do-list-items {
-    width: 40%;
-    margin: 20px auto;
+    margin: 50px auto 20px;
 }
 
 .finished-to-do-list-item {
+    width: 35%;
+    min-width: 35%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 10px 0;
+    margin: 10px auto;
+    border-bottom: solid 1px rgb(142, 162, 161);
 }
 
 .finished-list-item-text {
-    color: #62747e;
+    word-wrap: break-word;
+    color: #92abbb;
     text-decoration: line-through;
     display: inline;
-    font-size: 1em;
+    font-size: 0.9em;
+    padding-left: 25px;
 }
 
 .finished-delete-button {
-    color: #62747e;
+    color: #92abbb;
     font-size: 0.7em;
     margin: 0 30px;
 }
