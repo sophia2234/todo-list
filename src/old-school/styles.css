@@ -20,7 +20,7 @@ body {
 }
 
 /* list item input */
-.to-do-input-container {
+.new-list-item-input-container {
     width: 80%;
     margin: 0 auto;
     display: flex;
@@ -29,31 +29,31 @@ body {
     padding: 10px;
 }
 
-.to-do-input {
+.new-list-item-input {
     background: transparent;
     border: none;
     width: 90%;
     text-align: center;
 }
 
-.to-do-input:focus {
+.new-list-item-input:focus {
     outline-width: 0;
 }
 
-.add-button {
+.new-list-item-button {
     font-size: 1em;
     height: 60px;
     margin: 0 20px;
 }
 
-/* to do list items */
-.to-do-list-items {
+/* active to do list items */
+.active-list-items {
     width: 40%;
     min-width: 40%;
     margin: 20px auto;
 }
 
-.to-do-list-item {
+.active-list-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -62,24 +62,24 @@ body {
     border-radius: 5px;
 }
 
-.list-item-text {
+.active-list-item-text {
     display: inline;
     font-size: 1em;
     padding-left: 25px;
     color: darkblue;
 }
 
-.delete-button {
+.active-icon {
     font-size: 0.7em;
     margin: 0 30px;
 }
 
 /* finished to do list items */
-.finished-to-do-list-items {
+.finished-list-items {
     margin: 50px auto 20px;
 }
 
-.finished-to-do-list-item {
+.finished-list-item {
     width: 35%;
     min-width: 35%;
     display: flex;
@@ -98,7 +98,7 @@ body {
     padding-left: 25px;
 }
 
-.finished-delete-button {
+.finished-icon {
     color: #92abbb;
     font-size: 0.7em;
     margin: 0 30px;

@@ -6,13 +6,7 @@ class FinishedListItems extends Component {
         const {finishedListItems} = this.props;
 
         return (
-            <div className="finished-to-do-list-items">
-                {
-                    finishedListItems.length ?
-                    <p>{'Finished'}</p>
-                    :
-                    null
-                }
+            <div className="finished-list-items">
                 {
                     finishedListItems.map((item) =>
                         <ListItem

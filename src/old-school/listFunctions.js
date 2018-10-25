@@ -2,7 +2,7 @@ let toDoList = [];
 let finishedToDoList = [];
 
 $(document).ready(() => {
-    $('.to-do-input').bind("keyup", (event) => {
+    $('.new-list-item-input').bind("keyup", (event) => {
         if (event.keyCode === 13) {
             addItemToList();
         }
@@ -10,22 +10,22 @@ $(document).ready(() => {
 });
 
 function addItemToList() {
-    const listItem = $('.to-do-input').val();
+    const listItem = $('.new-list-item-input').val();
     if (listItem.length) {
         toDoList.push(listItem);
 
         const newToDoList = buildToDoList();
-        $('.to-do-list-items').html(newToDoList);
+        $('.active-list-items').html(newToDoList);
     }
 
-    $('.to-do-input').val('');
+    $('.new-list-item-input').val('');
 }
 
 function buildToDoList() {
     return toDoList.map((listItem) => {
-        return `<div class="to-do-list-item">
-                    <li class="list-item-text">${listItem}</li> 
-                    <i class="far fa-circle delete-button" onClick="deleteListItem('${listItem}')"> </i>
+        return `<div class="active-list-item">
+                    <li class="active-list-item-text">${listItem}</li> 
+                    <i class="far fa-circle active-icon" onClick="deleteListItem('${listItem}')"> </i>
                 </div>`;
     });
 }
@@ -35,19 +35,19 @@ function deleteListItem(listItem) {
     toDoList.splice(listItemIndex, 1);
 
     const modifiedToDoList = buildToDoList();
-    $('.to-do-list-items').html(modifiedToDoList);
+    $('.active-list-items').html(modifiedToDoList);
 
     finishedToDoList.push(listItem);
 
     const modifiedFinishedToDoList = buildFinishedToDoList();
-    $('.finished-to-do-list-items').html(modifiedFinishedToDoList);
+    $('.finished-list-items').html(modifiedFinishedToDoList);
 }
 
 function buildFinishedToDoList() {
     return finishedToDoList.map((listItem) => {
-        return `<div class="finished-to-do-list-item">
+        return `<div class="finished-list-item">
                     <li class="finished-list-item-text">${listItem}</li> 
-                    <i class="far fa-check-circle finished-delete-button"> </i>
+                    <i class="far fa-check-circle finished-icon"> </i>
                 </div>`;
     });
 }

@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
+
 import ListItemInput from './ListItemInput';
 import ActiveListItems from './ActiveListItems';
 import FinishedListItems from './FinishedListItems';
@@ -8,14 +9,17 @@ import './react-styles.css';
 class ToDoList extends Component {
     _addItemToList = () => {
         const currentListItem = this.state.currentListItem;
-        this.setState({
-            ...this.state,
-            currentListItem: '',
-            listItems: [
-                ...this.state.listItems,
-                currentListItem
-            ]
-        });
+
+        if (currentListItem.length) {
+            this.setState({
+                ...this.state,
+                currentListItem: '',
+                listItems: [
+                    ...this.state.listItems,
+                    currentListItem
+                ]
+            });
+        }
     };
 
     _setCurrentToDoListItem = (currentText) => {
@@ -25,7 +29,7 @@ class ToDoList extends Component {
         });
     };
 
-    _markItemAsDone = (finishedItem) => {
+    _markItemAsFinished = (finishedItem) => {
         const currentListItems = this.state.listItems;
         const indexOfFinishedItem = currentListItems.indexOf(finishedItem.toString());
 
@@ -46,7 +50,7 @@ class ToDoList extends Component {
         super(props);
         this.setCurrentToDoListItem = this._setCurrentToDoListItem.bind(this);
         this.addItemToList = this._addItemToList.bind(this);
-        this.markItemAsDone = this._markItemAsDone.bind(this);
+        this.markItemAsFinished = this._markItemAsFinished.bind(this);
 
         this.state = {
             currentListItem: '',
@@ -57,20 +61,23 @@ class ToDoList extends Component {
 
     render() {
         return (
-            <div className="App">
+            <div>
                 <h1 className="header">
                     To Do List
                 </h1>
                 <ListItemInput
+                    className="item-input"
                     currentInput={this.state.currentListItem}
                     onTextChange={this.setCurrentToDoListItem}
                     onSubmit={this.addItemToList}
                 />
                 <ActiveListItems
+                    className="active-items"
                     listItems={this.state.listItems}
-                    onClick={this.markItemAsDone}
+                    onClick={this.markItemAsFinished}
                 />
                 <FinishedListItems
+                    className="finished-items"
                     finishedListItems={this.state.finishedListItems}
                 />
             </div>

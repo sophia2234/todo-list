@@ -1,9 +1,127 @@
-.to-do-input {
-    width: 65%;
-    color: black;
-    margin: 10px;
+* {
+    margin: 0;
+    padding: 0;
+    font-size: 1.2em;
+    font-family: 'Nunito', sans-serif;
 }
 
-.add-button {
-    color: white;
+body {
+    background: rgb(65,111,39);
+    background: linear-gradient(90deg, rgba(65,111,39,1) 0%, rgba(11,80,30,1) 15%, rgba(19,38,110,1) 69%, rgba(7,55,119,1) 100%);
+    width: 80%;
+    margin: 0 auto;
+}
+
+
+.header {
+    color: #eee;
+    text-align: center;
+    font-size: 2em;
+    margin: 50px 0 50px;
+}
+
+/* list item input */
+.new-list-item-input-container {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    border-bottom: solid 2px #eee;
+    padding: 10px;
+}
+
+.new-list-item-input {
+    background: transparent;
+    border: none;
+    color: #eee;
+    width: 90%;
+    text-align: center;
+}
+
+.new-list-item-input:focus {
+    outline-width: 0;
+}
+
+.new-list-item-button {
+    margin-right: 25px;
+    border: none;
+    background-color: transparent;
+    font-size: 1em;
+    /*height: 60px;*/
+}
+
+.new-list-item-icon {
+    color: #eee;
+}
+
+/* active to do list items */
+.active-list-items {
+    width: 40%;
+    min-width: 40%;
+    margin: 20px auto;
+}
+
+.active-list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px auto;
+    background-color: rgba(240, 255, 255, 0.6);
+    border-radius: 5px;
+}
+
+.active-list-item-text {
+    display: inline;
+    font-size: 1em;
+    padding-left: 25px;
+    color: rgba(19,38,110,1);
+}
+
+.active-button {
+    margin-right: 25px;
+    border: none;
+    background-color: transparent;
+}
+
+.active-icon {
+    color: #eee;
+    /*font-size: 0.7em;*/
+    margin: 0 30px;
+}
+
+/* finished to do list items */
+.finished-list-items {
+    width: 40%;
+    min-width: 40%;
+    margin: 20px auto;
+}
+
+.finished-list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px auto;
+    border-bottom: solid 1px rgb(142, 162, 161);
+    border-right: solid 1px rgb(142, 162, 161);
+    border-radius: 5px;
+}
+
+.finished-list-item-text {
+    display: inline;
+    font-size: 1em;
+    padding-left: 25px;
+    color: #92abbb;
+    text-decoration: line-through;
+}
+
+.finished-button {
+    margin-right: 25px;
+    border: none;
+    background-color: transparent;
+}
+
+.finished-icon {
+    color: #92abbb;
+    /*font-size: 0.7em;*/
+    margin: 0 30px;
 }

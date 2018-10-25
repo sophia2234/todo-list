@@ -6,7 +6,7 @@ class ActiveListItems extends Component {
         const {listItems, onClick} = this.props;
 
         return (
-            <div className="to-do-list-items">
+            <div className="active-list-items">
                 {
                     listItems.map((item) =>
                         <ListItem
