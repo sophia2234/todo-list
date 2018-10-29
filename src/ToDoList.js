@@ -46,11 +46,29 @@ class ToDoList extends Component {
 
     };
 
+    _markItemAsActive = (activeItem) => {
+        const currentFinishedListItems = this.state.finishedListItems;
+        const indexOfActiveItem = currentFinishedListItems.indexOf(activeItem.toString());
+
+        currentFinishedListItems.splice(indexOfActiveItem, 1);
+
+        this.setState({
+            ...this.state,
+            listItems: [
+                ...this.state.listItems,
+                activeItem
+            ],
+            finishedListItems: currentFinishedListItems
+        })
+
+    };
+
     constructor(props) {
         super(props);
         this.setCurrentToDoListItem = this._setCurrentToDoListItem.bind(this);
         this.addItemToList = this._addItemToList.bind(this);
         this.markItemAsFinished = this._markItemAsFinished.bind(this);
+        this.markItemAsActive = this._markItemAsActive.bind(this);
 
         this.state = {
             currentListItem: '',
@@ -79,6 +97,7 @@ class ToDoList extends Component {
                 <FinishedListItems
                     className="finished-items"
                     finishedListItems={this.state.finishedListItems}
+                    onClick={this.markItemAsActive}
                 />
             </div>
         );

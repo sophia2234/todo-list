@@ -20,30 +20,16 @@ class ListItem extends Component {
                 <p className={getTextClass(isActive)}>
                     {item}
                 </p>
-                {
-                    isActive ?
-                        <button
-                            className={getButtonClass(isActive)}
-                            onClick={() => onClick(item)}
-                        >
-                            <FontAwesomeIcon
-                                className={getIconClass(isActive)}
-                                color="#eeeeee"
-                                icon="square"
-                            />
-                        </button>
-                        :
-                        <button
-                            className={getButtonClass(isActive)}
-                            onClick={() => console.log('Not implemented yet.')}
-                        >
-                            <FontAwesomeIcon
-                                className={getIconClass(isActive)}
-                                color="#eeeeee"
-                                icon="check-square"
-                            />
-                        </button>
-                }
+                <button
+                    className={getButtonClass(isActive)}
+                    onClick={() => onClick(item)}
+                >
+                    <FontAwesomeIcon
+                        className={getIconClass(isActive)}
+                        color="#eeeeee"
+                        icon={isActive ? "square" : "check-square"}
+                    />
+                </button>
             </div>
         );
     }

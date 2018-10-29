@@ -12,6 +12,7 @@ class ActiveListItems extends Component {
                         <ListItem
                             item={item}
                             isActive={true}
+                            key={item}
                             onClick={onClick}
                         />
                     )
