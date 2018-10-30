@@ -3,7 +3,7 @@ import ListItem from './ListItem';
 
 class FinishedListItems extends Component {
     render() {
-        const {finishedListItems} = this.props;
+        const {finishedListItems, onClick, deleteFunction} = this.props;
 
         return (
             <div className="finished-list-items">
@@ -12,6 +12,8 @@ class FinishedListItems extends Component {
                         <ListItem
                             item={item}
                             isActive={false}
+                            onClick={onClick}
+                            deleteFunction={deleteFunction}
                         />
                     )
                 }

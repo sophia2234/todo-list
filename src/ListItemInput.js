@@ -8,6 +8,7 @@ library.add(faPlus);
 class ListItemInput extends Component {
     render() {
         const {currentInput, onTextChange, onSubmit} = this.props;
+
         return (
             <div className="new-list-item-input-container">
                 <input

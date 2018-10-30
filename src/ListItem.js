@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
-import {library} from '@fortawesome/fontawesome-svg-core'
-import {faSquare, faCheckSquare} from '@fortawesome/free-solid-svg-icons'
+import {library} from '@fortawesome/fontawesome-svg-core';
+import {faSquare, faCheckSquare, faTrash} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 
 library.add(faSquare);
 library.add(faCheckSquare);
+library.add(faTrash);
 
 const getContainerClass = (isActive) => isActive ? "active-list-item" : "finished-list-item";
 const getTextClass = (isActive) => isActive ? "active-list-item-text" : "finished-list-item-text";
@@ -13,7 +14,7 @@ const getIconClass = (isActive) => isActive ? "delete-button" : "finished-delete
 
 class ListItem extends Component {
     render() {
-        const {item, isActive, onClick} = this.props;
+        const {item, isActive, onClick, deleteFunction} = this.props;
 
         return (
             <div className={getContainerClass(isActive)}>
@@ -33,16 +34,28 @@ class ListItem extends Component {
                             />
                         </button>
                         :
-                        <button
-                            className={getButtonClass(isActive)}
-                            onClick={() => console.log('Not implemented yet.')}
-                        >
-                            <FontAwesomeIcon
-                                className={getIconClass(isActive)}
-                                color="#eeeeee"
-                                icon="check-square"
-                            />
-                        </button>
+                        <div>
+                            <button
+                                className={getButtonClass(isActive)}
+                                onClick={() => onClick(item)}
+                            >
+                                <FontAwesomeIcon
+                                    className={getIconClass(isActive)}
+                                    color="#eeeeee"
+                                    icon="check-square"
+                                />
+                            </button>
+                            <button
+                                className={getButtonClass(isActive)}
+                                onClick={() => deleteFunction(item)}
+                            >
+                                <FontAwesomeIcon
+                                    className={getIconClass(isActive)}
+                                    color="#eeeeee"
+                                    icon="trash"
+                                />
+                            </button>
+                        </div>
                 }
             </div>
         );
