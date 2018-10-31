@@ -12,6 +12,7 @@ class FinishedListItems extends Component {
                         <ListItem
                             item={item}
                             isActive={false}
+                            key={item}
                             onClick={onClick}
                             deleteFunction={deleteFunction}
                         />
