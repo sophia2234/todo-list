@@ -22,7 +22,8 @@ describe('FinishedListItems', () => {
     beforeEach(() => {
         expectedProps = {
             finishedListItems: chance.n(chance.string, chance.d6() + 1),
-            onClick: jest.fn()
+            onClick: jest.fn(),
+            deleteFunction: jest.fn()
         };
 
         renderComponent();
@@ -46,7 +47,8 @@ describe('FinishedListItems', () => {
                 expect(renderedListItem.props.item).toBe(item);
                 expect(renderedListItem.props.isActive).toBe(false);
                 expect(renderedListItem.key).toBe(item);
-                expect(renderedListItem.props.onClick).toBe(expectedProps.onClick)
+                expect(renderedListItem.props.onClick).toBe(expectedProps.onClick);
+                expect(renderedListItem.props.deleteFunction).toBe(expectedProps.deleteFunction);
             });
         });
     });

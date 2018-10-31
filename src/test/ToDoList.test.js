@@ -1,6 +1,5 @@
 import React from 'react';
 import ShallowRenderer from 'react-test-renderer/shallow';
-import Chance from 'chance';
 
 import ToDoList from '../ToDoList';
 import ListItemInput from '../ListItemInput';
@@ -8,8 +7,6 @@ import ActiveListItems from '../ActiveListItems';
 import FinishedListItems from '../FinishedListItems';
 
 describe('ToDoList', () => {
-    const chance = new Chance();
-
     let renderedComponent,
         renderedHeaderOne,
         renderedListItemInput,
@@ -74,7 +71,8 @@ describe('ToDoList', () => {
         it('should render the FinishedListItems component', () => {
             expect(renderedFinishedListItems.type).toBe(FinishedListItems);
             expect(renderedFinishedListItems.props.className).toBe('finished-items');
-            expect(renderedActiveListItems.props).toHaveProperty('onClick');
+            expect(renderedFinishedListItems.props).toHaveProperty('onClick');
+            expect(renderedFinishedListItems.props).toHaveProperty('deleteFunction');
         });
     });
 });

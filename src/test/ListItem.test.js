@@ -12,17 +12,39 @@ describe('ListItem', () => {
         renderedListItemText,
         renderedButton,
 
-        renderedFontAwesomeIcon,
+        renderedActiveSquareIcon,
+
+        renderedFinishedDiv,
+        renderedFinishedSquareButton,
+        renderedFinishedTrashButton,
+
+        renderedFinishedSquareIcon,
+        renderedFinishedTrashIcon,
 
         expectedProps;
 
-    const cacheChildren = () => {
+    const cacheActiveChildren = () => {
         [
             renderedListItemText,
             renderedButton
         ] = renderedComponent.props.children;
 
-        renderedFontAwesomeIcon = renderedButton.props.children;
+        renderedActiveSquareIcon = renderedButton.props.children;
+    };
+
+    const cacheFinishedChildren = () => {
+        [
+            renderedListItemText,
+            renderedFinishedDiv
+        ] = renderedComponent.props.children;
+
+        [
+            renderedFinishedSquareButton,
+            renderedFinishedTrashButton
+        ] = renderedFinishedDiv.props.children;
+
+        renderedFinishedSquareIcon = renderedFinishedSquareButton.props.children;
+        renderedFinishedTrashIcon = renderedFinishedTrashButton.props.children;
     };
 
     const renderComponent = () => {
@@ -31,8 +53,6 @@ describe('ListItem', () => {
         shallowRenderer.render(<ListItem {...expectedProps} />);
 
         renderedComponent = shallowRenderer.getRenderOutput();
-
-        cacheChildren();
     };
 
     beforeEach(() => {
@@ -41,7 +61,8 @@ describe('ListItem', () => {
         expectedProps = {
             item: chance.string(),
             isActive: chance.bool(),
-            onClick: jest.fn()
+            onClick: jest.fn(),
+            deleteFunction: jest.fn()
         };
     });
 
@@ -50,6 +71,7 @@ describe('ListItem', () => {
             expectedProps.isActive = true;
 
             renderComponent();
+            cacheActiveChildren();
         });
 
         it('should render the outermost div', () => {
@@ -78,9 +100,9 @@ describe('ListItem', () => {
         });
 
         it('should render the FontAwesomeIcon component', () => {
-            expect(renderedFontAwesomeIcon.type).toBe(FontAwesomeIcon);
-            expect(renderedFontAwesomeIcon.props.className).toBe('delete-button');
-            expect(renderedFontAwesomeIcon.props.icon).toBe('square');
+            expect(renderedActiveSquareIcon.type).toBe(FontAwesomeIcon);
+            expect(renderedActiveSquareIcon.props.className).toBe('delete-button');
+            expect(renderedActiveSquareIcon.props.icon).toBe('square');
         });
     });
     describe('list item is **not** active', () => {
@@ -88,6 +110,7 @@ describe('ListItem', () => {
             expectedProps.isActive = false;
 
             renderComponent();
+            cacheFinishedChildren();
         });
 
         it('should render the outermost div', () => {
@@ -101,24 +124,44 @@ describe('ListItem', () => {
             expect(renderedListItemText.props.children).toBe(expectedProps.item);
         });
 
-        describe('button', () => {
+        describe('square button', () => {
             it('should render the button', () => {
-                expect(renderedButton.type).toBe('button');
-                expect(renderedButton.props.className).toBe('finished-button');
+                expect(renderedFinishedSquareButton.type).toBe('button');
+                expect(renderedFinishedSquareButton.props.className).toBe('finished-button');
             });
 
             it('should call the passed in function on click', () => {
-                renderedButton.props.onClick();
+                renderedFinishedSquareButton.props.onClick();
 
                 expect(expectedProps.onClick).toHaveBeenCalledTimes(1);
                 expect(expectedProps.onClick).toHaveBeenCalledWith(expectedProps.item);
             });
+
+            it('should render the FontAwesomeIcon component', () => {
+                expect(renderedFinishedSquareIcon.type).toBe(FontAwesomeIcon);
+                expect(renderedFinishedSquareIcon.props.className).toBe('finished-delete-button');
+                expect(renderedFinishedSquareIcon.props.icon).toBe('check-square');
+            });
         });
 
-        it('should render the FontAwesomeIcon component', () => {
-            expect(renderedFontAwesomeIcon.type).toBe(FontAwesomeIcon);
-            expect(renderedFontAwesomeIcon.props.className).toBe('finished-delete-button');
-            expect(renderedFontAwesomeIcon.props.icon).toBe('check-square');
+        describe('trash button', () => {
+            it('should render the button', () => {
+                expect(renderedFinishedTrashButton.type).toBe('button');
+                expect(renderedFinishedTrashButton.props.className).toBe('finished-button');
+            });
+
+            it('should call the passed in function on click', () => {
+                renderedFinishedTrashButton.props.onClick();
+
+                expect(expectedProps.deleteFunction).toHaveBeenCalledTimes(1);
+                expect(expectedProps.deleteFunction).toHaveBeenCalledWith(expectedProps.item);
+            });
+
+            it('should render the FontAwesomeIcon component', () => {
+                expect(renderedFinishedTrashIcon.type).toBe(FontAwesomeIcon);
+                expect(renderedFinishedTrashIcon.props.className).toBe('finished-delete-button');
+                expect(renderedFinishedTrashIcon.props.icon).toBe('trash');
+            });
         });
     });
 
