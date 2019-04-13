@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
+
 import ListItem from './ListItem';
 
 class FinishedListItems extends Component {
     render() {
-        const {finishedListItems, onClick, deleteFunction} = this.props;
+        const {finishedListItems, onClick} = this.props;
 
         return (
             <div className="finished-list-items">
@@ -14,7 +15,6 @@ class FinishedListItems extends Component {
                             isActive={false}
                             key={item}
                             onClick={onClick}
-                            deleteFunction={deleteFunction}
                         />
                     )
                 }

@@ -13,7 +13,6 @@ class ListItemInput extends Component {
             <div className="new-list-item-input-container">
                 <input
                     className="new-list-item-input"
-                    // type="text"
                     value={currentInput}
                     onChange={onTextChange}
                 />

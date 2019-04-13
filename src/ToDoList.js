@@ -7,7 +7,7 @@ import FinishedListItems from './FinishedListItems';
 import './react-styles.css';
 
 class ToDoList extends Component {
-    _addItemToList = () => {
+    addItemToList = () => {
         const currentListItem = this.state.currentListItem;
 
         if (currentListItem.length) {
@@ -22,14 +22,14 @@ class ToDoList extends Component {
         }
     };
 
-    _setCurrentToDoListItem = (currentText) => {
+    setCurrentToDoListItem = (currentText) => {
         this.setState({
             ...this.state,
             currentListItem: currentText.target.value
         });
     };
 
-    _markItemAsFinished = (finishedItem) => {
+    markItemAsFinished = (finishedItem) => {
         const currentListItems = this.state.listItems;
         const indexOfFinishedItem = currentListItems.indexOf(finishedItem.toString());
 
@@ -46,7 +46,7 @@ class ToDoList extends Component {
 
     };
 
-    _markItemAsActive = (activeItem) => {
+    markItemAsActive = (activeItem) => {
         const currentFinishedListItems = this.state.finishedListItems;
         const indexOfActiveItem = currentFinishedListItems.indexOf(activeItem.toString());
 
@@ -62,25 +62,12 @@ class ToDoList extends Component {
         })
     };
 
-    _deleteFinishedItem = (itemToDelete) => {
-        const currentFinishedListItems = this.state.finishedListItems;
-        const indexOfItemToDelete = currentFinishedListItems.indexOf(itemToDelete.toString());
-
-        currentFinishedListItems.splice(indexOfItemToDelete, 1);
-
-        this.setState({
-            ...this.state,
-            finishedListItems: currentFinishedListItems
-        });
-    };
-
     constructor(props) {
         super(props);
-        this.setCurrentToDoListItem = this._setCurrentToDoListItem.bind(this);
-        this.addItemToList = this._addItemToList.bind(this);
-        this.markItemAsFinished = this._markItemAsFinished.bind(this);
-        this.markItemAsActive = this._markItemAsActive.bind(this);
-        this.deleteFinishedItem = this._deleteFinishedItem.bind(this);
+        this.setCurrentToDoListItem = this.setCurrentToDoListItem.bind(this);
+        this.addItemToList = this.addItemToList.bind(this);
+        this.markItemAsFinished = this.markItemAsFinished.bind(this);
+        this.markItemAsActive = this.markItemAsActive.bind(this);
 
         this.state = {
             currentListItem: '',
@@ -111,7 +98,6 @@ class ToDoList extends Component {
                     className="finished-items"
                     finishedListItems={this.state.finishedListItems}
                     onClick={this.markItemAsActive}
-                    deleteFunction={this.deleteFinishedItem}
                 />
             </div>
         );
