@@ -4,7 +4,7 @@ import ListItem from './ListItem';
 
 class FinishedListItems extends Component {
     render() {
-        const {finishedListItems, onClick} = this.props;
+        const {finishedListItems, onClick, deleteItem} = this.props;
 
         return (
             <div className="finished-list-items">
@@ -15,6 +15,7 @@ class FinishedListItems extends Component {
                             isActive={false}
                             key={item}
                             onClick={onClick}
+							deleteItem={deleteItem}
                         />
                     )
                 }

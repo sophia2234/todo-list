@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+
 import {library} from '@fortawesome/fontawesome-svg-core';
 import {faSquare, faCheckSquare, faTrash} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
@@ -12,7 +13,7 @@ const getTextClass = (isActive) => isActive ? "active-list-item-text" : "finishe
 
 class ListItem extends Component {
     render() {
-        const {item, isActive, onClick} = this.props;
+        const {item, isActive, onClick, deleteItem} = this.props;
 
         return (
             <div className={getContainerClass(isActive)}>
@@ -43,7 +44,7 @@ class ListItem extends Component {
                             </button>
                             <button
                                 className="finished-button"
-                                onClick={() => console.log('Not implemented yet!')}
+								onClick={() => deleteItem(item)}
                             >
                                 <FontAwesomeIcon
                                     color="#eeeeee"
